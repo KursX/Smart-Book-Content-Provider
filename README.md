@@ -17,11 +17,20 @@ books -> content://com.kursx.smartbook/books
 ```
 contentResolver.query("content://com.kursx.smartbook/books".toUri(), null, null, null, null)?.use { cursor ->  
   if (cursor.moveToFirst()) {
-      val language = cursor.getString(languageIndex)
-      val name = cursor.getString(nameIndex)  
-      val author = cursor.getString(authorIndex)
-      val cover = cursor.getString(coverIndex).toUri()
-      val deeplink = cursor.getString(deeplinkIndex).toUri()
+      val language = cursor.getString(cursor.getColumnIndex("language"))
+      val name = cursor.getString(cursor.getColumnIndex("name"))  
+      val author = cursor.getString(cursor.getColumnIndex("author"))
+      val cover = cursor.getString(cursor.getColumnIndex("cover")).toUri()
+      val deeplink = cursor.getString(cursor.getColumnIndex("deeplink")).toUri()
   }
 }
+
+...
+
+coil.compose.AsyncImage(model = cover)
+
+...
+
+startActivity(Intent(Intent.ACTION_VIEW, deeplink))
+
 ```
