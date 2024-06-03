@@ -1,6 +1,6 @@
 # Smart Book ContentProvider Demo
 
-![Demo](https://www.dropbox.com/scl/fi/m7qxu9ovun1y4qbwyihfo/smart_book_content_provider.gif?rlkey=akpbdxfpjgwnle4cahowjvyc4&st=pj97reyl&dl=1)
+![Demo](https://github.com/KursX/Smart-Book-Content-Provider/blob/main/demo.gif)
 
 
 
@@ -17,7 +17,7 @@ books -> content://com.kursx.smartbook/books
 ```
 contentResolver.query("content://com.kursx.smartbook/books".toUri(), null, null, null, null)?.use { cursor ->  
   if (cursor.moveToFirst()) {
-	  val language = cursor.getString(languageIndex)
+      val language = cursor.getString(languageIndex)
       val name = cursor.getString(nameIndex)  
       val author = cursor.getString(authorIndex)
       val cover = cursor.getString(coverIndex).toUri()
